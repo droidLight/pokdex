@@ -11,7 +11,7 @@ class PokemonCard extends HTMLElement {
         //style
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
-        link.setAttribute("href", "public/pokecard.css");
+        link.setAttribute("href", "pokecard.css");
         this.shadowRoot.appendChild(link);        
     }
 
