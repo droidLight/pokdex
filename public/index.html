@@ -6,15 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0">
     <title>Pokedex</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="root" class="container flex col">
+    <div class="container flex col">
         <pokemon-search></pokemon-search>
-        <div class="flex row">
-            <pokemon-list></pokemon-list>
-            <pokemon-detail></pokemon-detail>
+        <div id="contents" class="flex row">
+            <div id="list-container" class="card">
+                <pokemon-list></pokemon-list>
+            </div>            
+            <div id="detail-container">
+                <pokemon-detail></pokemon-detail>
+            </div>            
         </div>
     </div>
 </body>

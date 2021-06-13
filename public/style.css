@@ -1,5 +1,6 @@
 html, body{
     margin: 0;
+    background-color: rgba(248,35,47,255);
 }
 
 .flex{
@@ -17,4 +18,23 @@ html, body{
     height:100vh;
     padding: 32px;
     box-sizing: border-box;
+}
+
+.card{
+    border-radius: 16px;
+    box-shadow: 4px 4px 16px 2px rgba(0, 0, 0, 0.3);
+    padding: 8px;
+}
+
+#list-container{
+    width: 60vw;  
+}
+
+#detail-container{
+    width: 30vw;
+}
+
+#contents{
+    margin: 32px 0px;
+    justify-content: space-between;
 }

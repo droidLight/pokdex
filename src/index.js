@@ -1,3 +1,5 @@
+import "../public/style.css";
+
 import PokemonList from "./pokemon-list";
 import PokemonCard from "./pokemon-card";
 import PokemonDetail from "./pokemon-detail";

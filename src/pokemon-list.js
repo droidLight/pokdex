@@ -1,3 +1,5 @@
+import {getPokemonList} from "./poke-data";
+
 class PokemonList extends HTMLElement {
 
     constructor() {
@@ -18,7 +20,7 @@ class PokemonList extends HTMLElement {
     connectedCallback() {
         if (this.isConnected) {
                         
-            this.getData().then(data => {                
+            getPokemonList(15, 10).then(data => {                
                 data.forEach(item=>{
                     let pokeCard = document.createElement("pokemon-card");
                     pokeCard.setAttribute("name", item.name);
@@ -31,12 +33,6 @@ class PokemonList extends HTMLElement {
             })
                         
         }
-    }
-
-    async getData() {
-        let response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10&offset=20");
-        let jsonData = await response.json();
-        return jsonData.results;
     }
 
     render(source){

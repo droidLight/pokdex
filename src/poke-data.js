@@ -1,4 +1,5 @@
-async function getData(name) {
+//function to query data based on pokemon name
+async function getPokemon(name) {
     let result = undefined;
     try {
         let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + name);
@@ -22,4 +23,10 @@ async function getData(name) {
     return result;
 }
 
-export default getData;
+async function getPokemonList(limit, offset) {
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+    let jsonData = await response.json();
+    return jsonData.results;
+}
+
+export { getPokemon, getPokemonList };

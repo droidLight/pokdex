@@ -1,5 +1,5 @@
 import searchProxy from "./searchproxy";
-import getData from "./poke-data";
+import {getPokemon} from "./poke-data";
 
 class PokemonSearch extends HTMLElement {
 
@@ -18,7 +18,7 @@ class PokemonSearch extends HTMLElement {
 
     handleClick(event) {
         if (event.key === "Enter") {
-            getData(this.input.value)
+            getPokemon(this.input.value)
                 .then((result) => {                   
                    let p = searchProxy();
                    p.saveData = result;

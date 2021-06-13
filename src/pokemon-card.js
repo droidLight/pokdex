@@ -1,5 +1,5 @@
 import searchProxy from "./searchproxy";
-import getData from "./poke-data";
+import {getPokemon} from "./poke-data";
 
 
 class PokemonCard extends HTMLElement {
@@ -12,11 +12,7 @@ class PokemonCard extends HTMLElement {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("href", "public/pokecard.css");
-        this.shadowRoot.appendChild(link);
-
-        this.detailsVisible = false;
-        this.pokemonName = undefined;
-        this.pokemonUrl = undefined;
+        this.shadowRoot.appendChild(link);        
     }
 
     connectedCallback() {
@@ -29,14 +25,10 @@ class PokemonCard extends HTMLElement {
 
         let name = document.createElement("p");
         name.classList.add("pokemon-name");
-        name.innerText = pokemonName;
-
-        let detailsBtn = document.createElement("button");
-        detailsBtn.classList.add("details-btn");
-        detailsBtn.innerText = "Details";
-
-        detailsBtn.addEventListener("click", function (e) {
-            getData(pokemonName).then((result) => {
+        name.innerText = pokemonName.charAt(0).toUpperCase()+pokemonName.substr(1).toLowerCase();
+        
+        this.addEventListener("click", function (e) {
+            getPokemon(pokemonName).then((result) => {
                 let p = searchProxy();
                 p.saveData = result;
                 window.dispatchEvent(new Event("storage"));
@@ -46,7 +38,6 @@ class PokemonCard extends HTMLElement {
         });
 
         container.appendChild(name);
-        container.appendChild(detailsBtn);
 
         this.shadowRoot.append(container);
     }
