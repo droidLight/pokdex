@@ -1,21 +1,26 @@
 import {getPokemonList} from "./poke-data";
-import "../public/pokelist.css";
 
+const template = document.createElement("template");
+template.innerHTML=`
+<style>
+    #list-root{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        justify-content: flex-start;    
+    }
+</style>
+<div id="list-root"></div>
+`;
 class PokemonList extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({mode:'open'});
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        this.root = this.shadowRoot.querySelector("#list-root");
         
-        let link = document.createElement("link");
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("href", "public/pokelist.css");        
-        this.shadowRoot.appendChild(link);
-
-        this.root = document.createElement("div");
-        this.root.id = "list-root";
-        
-        this.shadowRoot.appendChild(this.root);
     }
 
     connectedCallback() {

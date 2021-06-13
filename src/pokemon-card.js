@@ -1,18 +1,45 @@
 import searchProxy from "./searchproxy";
 import {getPokemon} from "./poke-data";
-import "../public/pokecard.css";
+
+const template = document.createElement("template");
+template.innerHTML = `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.pokemon-name{
+    font-size: 24px;   
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 15px;
+    margin: 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);    
+    background-color: rgba(100,183,194,255);
+    cursor: pointer;
+}
+
+.details-btn{
+    background-color: rgba(61,50,53,255);
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    padding: 8px 16px;
+}
+</style>
+`;
 
 class PokemonCard extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
-
-        //style
-        let link = document.createElement("link");
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("href", "pokecard.css");
-        this.shadowRoot.appendChild(link);        
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     connectedCallback() {
