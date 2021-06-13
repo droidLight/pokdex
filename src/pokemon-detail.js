@@ -1,4 +1,5 @@
 import searchProxy from "./searchproxy"
+import "../public/pokedetail.css";
 
 class PokemonDetail extends HTMLElement {
 

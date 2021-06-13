@@ -1,4 +1,5 @@
 import {getPokemonList} from "./poke-data";
+import "../public/pokelist.css";
 
 class PokemonList extends HTMLElement {
 

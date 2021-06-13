@@ -1,6 +1,6 @@
 import searchProxy from "./searchproxy";
 import {getPokemon} from "./poke-data";
-
+import "../public/pokecard.css";
 
 class PokemonCard extends HTMLElement {
 
